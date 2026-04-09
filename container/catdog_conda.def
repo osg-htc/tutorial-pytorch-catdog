@@ -1,0 +1,14 @@
+Bootstrap: docker
+From: condaforge/miniforge3:25.3.0-3
+
+%post
+   # Run the chmod line only if building on CHTC's build nodes
+   chmod 777 /tmp
+
+   # Install system packages
+   apt-get update -y
+   apt-get install -y build-essential git nano vim curl wget zip
+
+   # Install Python packages
+   CONDA_OVERRIDE_CUDA=12.9 \
+   conda install -c conda-forge pytorch-gpu torchvision torchaudio pandas typer matplotlib cuda-version=12.9

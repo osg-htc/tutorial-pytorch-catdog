@@ -1,0 +1,24 @@
+batch_name = catdog_train_$(Cluster)
+
+#=== Job execution / data handling ===#
+container_image = osdf:///osg-public/containers/catdog_conda.sif
+shell = ./train.sh
+transfer_input_files = train.sh, train.py, osdf:///osg-public/data/tutorial-OSG-pytorch/train.zip
+transfer_output_files = model.pth
+
+#=== Stdout/error / HTCondor log ===#
+output = logs/$(batch_name).out
+error = logs/$(batch_name).err
+log = logs/$(batch_name).log
+
+#=== Resource requirements ===#
+request_cpus = 1
+request_memory = 4GB
+request_disk = 15GB
+request_gpus = 1
+
+#=== GPU options ===#
+gpus_minimum_capability = 7.5
+gpus_minimum_memory = 4GB
+
+queue

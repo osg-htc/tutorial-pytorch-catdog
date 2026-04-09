@@ -1,0 +1,25 @@
+batch_name = catdog_infer_$(Cluster)
+
+#=== Job execution / data handling ===#
+container_image = osdf:///osg-public/containers/catdog_conda.sif
+shell = ./infer.sh $(zipfile)
+transfer_input_files = infer.sh, infer.py, ../train/model.pth, ../train/train.py, data/$(zipfile)
+transfer_output_files = dog_probs.csv
+transfer_output_remaps = "dog_probs.csv = output/dog_probs_$(zipfile).csv"
+
+#=== Stdout/error / HTCondor log ===#
+output = logs/$(batch_name).$(Process).out
+error = logs/$(batch_name).$(Process).err
+log = logs/$(batch_name).log
+
+#=== Resource requirements ===#
+request_cpus = 1
+request_memory = 4GB
+request_disk = 15GB
+request_gpus = 1
+
+#=== GPU options ===#
+gpus_minimum_capability = 7.5
+gpus_minimum_memory = 4GB
+
+queue zipfile from data_list.txt

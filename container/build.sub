@@ -1,0 +1,14 @@
+batch_name = build_catdog_$(Cluster)
+log = $(batch_name).log
+
+#=== Job execution / data handling ===#
+transfer_input_files = catdog_conda.def
+
+#=== Resource requirements ===#
+requirements = (HasCHTCStaging == true)
++IsBuildJob = true
+request_cpus = 1
+request_memory = 8GB
+request_disk = 100GB
+
+queue
