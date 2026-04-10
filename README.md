@@ -11,4 +11,4 @@ This repository contains files demonstrating how to run PyTorch workflows on the
 * `container/` - Reference files for building the software environment in these examples.
 
 ## Training slides
-Slides (pdf) [To be posted]
+[Google Slides](https://docs.google.com/presentation/d/1RvjDtVf0xx1pqFdbgmMY5wkPVr1B5hir6bpoqlIgF9Q/edit?usp=sharing)
