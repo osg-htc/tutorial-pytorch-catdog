@@ -2,9 +2,6 @@ Bootstrap: docker
 From: condaforge/miniforge3:25.3.0-3
 
 %post
-   # Run the chmod line only if building on CHTC's build nodes
-   chmod 777 /tmp
-
    # Install system packages
    apt-get update -y
    apt-get install -y build-essential git nano vim curl wget zip

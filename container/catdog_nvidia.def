@@ -5,9 +5,6 @@ From: nvcr.io/nvidia/pytorch:25.02-py3
     requirements.txt
 
 %post
-    # Run the chmod line only if building on CHTC's build nodes
-    chmod 777 /tmp
-
     # Install system packages
     DEBIAN_FRONTEND="noninteractive"
     TZ=America/Chicago
