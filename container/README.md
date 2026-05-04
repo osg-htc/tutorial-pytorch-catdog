@@ -25,23 +25,26 @@ Refer to [our guide on building Docker images](https://chtc.cs.wisc.edu/uw-resea
 
 ## Apptainer
 
-You can build an Apptainer container image on CHTC systems. The steps below use the `catdog_conda.def` file - if you prefer, you can modify `build.sub` and the steps below to reference `catdog_nvidia.def`. You'll also need to modify `build.sub` to transfer `requirements.txt`.
+You can build an Apptainer container image on OSPool Access Points. The steps below use the `catdog_conda.def` file - if you prefer, you can use `catdog_nvidia.def`.
 
-To do so, you'll need to submit an interactive job:
+First, make sure you run these lines to avoid filling the `/tmp` directory on the Access Point:
 ```
-condor_submit -i build.sub
+mkdir -p $HOME/tmp
+export TMPDIR=$HOME/tmp
+export APPTAINER_TMPDIR=$HOME/tmp
+export APPTAINER_CACHEDIR=$HOME/tmp
 ```
 
-Once you've entered the interactive job, build the container using Apptainer:
+Build the container using Apptainer:
 ```
 apptainer build catdog_conda.sif catdog_conda.def
 ```
 
 The build should take a few minutes. After the build is complete, you should see your Apptainer image, `catdog_conda.sif`.
 
-Move this file to your `/staging` directory:
+Move this file to your `/ospool` directory (change `ap40` to your Access Point):
 ```
-mv catdog_conda.sif /staging/$USER
+mv catdog_conda.sif /ospool/ap40/data/$USER
 ```
 
-Refer to [our guide on building Apptainer images](https://chtc.cs.wisc.edu/uw-research-computing/apptainer-htc).
+Refer to [our guide on building Apptainer images](https://portal.osg-htc.org/documentation/htc_workloads/using_software/containers-singularity/).
