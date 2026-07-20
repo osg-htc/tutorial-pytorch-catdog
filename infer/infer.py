@@ -35,7 +35,7 @@ def main(
 
     # load model and prepare for inference
     model = CatAndDogConvNet().to(device)
-    model.load_state_dict(torch.load(model_path))
+    model.load_state_dict(torch.load(model_path, map_location=device))
     model.eval()
 
     # load data
