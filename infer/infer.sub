@@ -1,7 +1,7 @@
 batch_name = catdog_infer_$(Cluster)
 
 #=== Job execution / data handling ===#
-container_image = osdf:///osg-public/containers/catdog_conda.sif
+container_image = $ENV(PWD)/catdog_conda.sif
 shell = ./infer.sh $(zipfile)
 transfer_input_files = infer.sh, infer.py, ../train/model.pth, ../train/train.py, data/$(zipfile)
 transfer_output_files = dog_probs.csv
@@ -14,12 +14,16 @@ log = logs/$(batch_name).log
 
 #=== Resource requirements ===#
 request_cpus = 1
-request_memory = 4GB
-request_disk = 15GB
-request_gpus = 1
+request_memory = 1GB
+request_disk = 50MB
 
 #=== GPU options ===#
-gpus_minimum_capability = 7.5
-gpus_minimum_memory = 4GB
+#request_gpus = 1
+#gpus_minimum_capability = 7.5
+#gpus_minimum_memory = 4GB
+
+#=== Notebook-only options ===#
+transfer_container = false
+should_transfer_files = YES
 
 queue zipfile from data_list.txt
