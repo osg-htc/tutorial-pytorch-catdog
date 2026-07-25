@@ -3,6 +3,7 @@ In this tutorial, we will use PyTorch to train a cat/dog classifier to distingui
 
 ```
 git clone https://github.com/osg-htc/tutorial-pytorch-catdog.git
+cd tutorial-pytorch-catdog
 git switch pearc26
 ```
 
