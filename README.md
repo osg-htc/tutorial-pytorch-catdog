@@ -2,8 +2,9 @@
 In this tutorial, we will use PyTorch to train a cat/dog classifier to distinguish between images of cats and dogs. To download the materials for this tutorial, use this command in your `/home` directory on the Access Point in the [OSPool notebooks](https://notebook.ospool.osg-htc.org/) and switch to the PEARC26 branch:
 
 ```
-git clone --branch pearc26 https://github.com/osg-htc/tutorial-pytorch-catdog.git
+git clone https://github.com/osg-htc/tutorial-pytorch-catdog.git
 cd tutorial-pytorch-catdog
+git switch pearc26
 ```
 
 The github repository contains:
